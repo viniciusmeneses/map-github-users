@@ -7,11 +7,16 @@
   "author": "viniciusmeneses <vini23hot@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-map-gl": "^4.0.5",
-    "react-scripts": "2.1.1"
+    "react-redux": "^6.0.0",
+    "react-scripts": "2.1.1",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.1",
+    "redux-saga": "^0.16.2"
   },
   "scripts": {
     "start": "react-scripts start",

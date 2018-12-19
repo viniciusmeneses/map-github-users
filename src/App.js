@@ -1,13 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+
+import store from './store';
 
 import Panel from './components/Panel';
 import Map from './components/Map';
 
 const App = () => (
-  <div id="app">
+  <Provider store={store}>
     <Map />
     <Panel />
-  </div>
+  </Provider>
 );
 
 export default App;

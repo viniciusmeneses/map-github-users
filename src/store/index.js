@@ -8,7 +8,7 @@ const middlewares = [];
 const sagaMiddleware = createSagaMiddleware();
 middlewares.push(sagaMiddleware);
 
-const store = createStore(reducers, {}, compose(applyMiddleware(...[])));
+const store = createStore(reducers, {}, compose(applyMiddleware(...middlewares)));
 
 sagaMiddleware.run(sagas);
 

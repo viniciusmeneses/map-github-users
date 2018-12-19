@@ -15,7 +15,7 @@ export default function users(state = { loading: false, data: [], error: '' }, a
         ...state,
         loading: false,
         error: '',
-        data: [...state.data, action.payload.user],
+        data: [...state.data, action.payload.userData],
       };
     case Types.ADD_FAILURE:
       return { ...state, loading: false, error: action.payload.error };
@@ -30,11 +30,11 @@ export const Creators = {
     type: TypeError.ADD_REQUEST,
     payload: { username },
   }),
-  addUserSuccess: user => ({
+  addUserSuccess: userData => ({
     type: Types.ADD_SUCCESS,
-    payload: { user },
+    payload: { userData },
   }),
-  addUserError: error => ({
+  addUserFailure: error => ({
     type: Types.ADD_FAILURE,
     payload: { error },
   }),

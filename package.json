@@ -7,8 +7,10 @@
   "author": "viniciusmeneses <vini23hot@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^6.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-map-gl": "^4.0.5",
     "react-scripts": "2.1.1"
   },
   "scripts": {
@@ -25,5 +27,12 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "5.6.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1"
+  }
 }

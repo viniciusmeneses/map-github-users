@@ -1,7 +1,17 @@
 import React from 'react';
 
-const Panel = () => (
-  <div />
+import './styles.css';
+
+const Panel = ({ users }) => (
+  <section className="panel__wrapper">
+    <div>
+      {users.map(user => (
+        <article>
+
+        </article>
+      ))}
+    </div>
+  </section>
 );
 
 export default Panel;

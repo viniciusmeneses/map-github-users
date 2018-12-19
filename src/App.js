@@ -3,13 +3,11 @@ import { Provider } from 'react-redux';
 
 import store from './store';
 
-import Panel from './components/Panel';
-import Map from './components/Map';
+import Main from './pages/Main';
 
 const App = () => (
   <Provider store={store}>
-    <Map />
-    <Panel />
+    <Main />
   </Provider>
 );
 

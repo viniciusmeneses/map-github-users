@@ -68,6 +68,22 @@
   color: #f06464;
 }
 
-.panel__user-button__go {
+.panel__user-button__find {
   color: #e4e4e4;
+}
+
+.panel__no-users {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+  font-size: 8rem;
+  color: #f3f3f3;
+}
+
+.panel__no-users p {
+  font-size: 1rem;
+  font-weight: 400;
 }

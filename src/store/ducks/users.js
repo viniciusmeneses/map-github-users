@@ -5,6 +5,7 @@ export const Types = {
   ADD_REQUEST: 'users/ADD_REQUEST',
   ADD_FAILURE: 'users/ADD_FAILURE',
   ADD_SUCCESS: 'users/ADD_SUCCESS',
+  REMOVE_USER: 'users/REMOVE_USER',
 };
 
 // REDUCER
@@ -20,6 +21,11 @@ export default function users(state = { loading: false, data: [] }, action) {
       };
     case Types.ADD_FAILURE:
       return { ...state, loading: false };
+    case Types.REMOVE_USER:
+      return {
+        ...state,
+        data: state.data.filter(user => user.login !== action.payload.userLogin),
+      };
     default:
       return state;
   }
@@ -47,6 +53,15 @@ export const Creators = {
     return {
       type: Types.ADD_FAILURE,
       payload: { error },
+    };
+  },
+  removeUser: (userLogin) => {
+    toast.info('Github user removed!', {
+      className: 'main__toast-info',
+    });
+    return {
+      type: Types.REMOVE_USER,
+      payload: { userLogin },
     };
   },
 };

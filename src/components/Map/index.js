@@ -1,21 +1,21 @@
 import React from 'react';
-import {
-  compose, lifecycle, withProps, withState, withHandlers,
-} from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import MapGL, { Marker } from 'react-map-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles.css';
 
 const Map = ({
-  viewport, handleMapClick, handleMapViewport, users,
+  viewport, handleMapClick, users, onMapViewportChange,
 }) => (
   <MapGL
     {...viewport}
+    width={window.innerWidth}
+    height={window.innerHeight}
     onClick={handleMapClick}
     mapStyle="mapbox://styles/mapbox/basic-v9"
     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
-    onViewportChange={handleMapViewport}
+    onViewportChange={onMapViewportChange}
   >
     {users.map(user => (
       <Marker
@@ -39,35 +39,11 @@ const Map = ({
 );
 
 const enchance = compose(
-  withState('viewport', 'setViewport', {
-    width: window.innerWidth,
-    height: window.innerHeight,
-    zoom: 0,
-  }),
-  withProps({
-    resizeMap() {
-      this.setViewport(viewport => ({
-        ...viewport,
-        width: window.innerWidth,
-        height: window.innerHeight,
-      }));
-    },
-  }),
-  lifecycle({
-    componentDidMount() {
-      window.addEventListener('resize', () => this.props.resizeMap());
-      this.props.resizeMap();
-    },
-    componentWillUnmount() {
-      window.removeEventListener('resize', () => this.props.resizeMap());
-    },
-  }),
   withHandlers({
     handleMapClick: props => (e) => {
       const [longitude, latitude] = e.lngLat;
       props.passLatLong(longitude, latitude);
     },
-    handleMapViewport: props => viewport => props.setViewport(() => viewport),
   }),
 );
 

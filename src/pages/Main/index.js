@@ -12,7 +12,7 @@ import ModalInput from '../../components/ModalInput';
 const Main = ({ users, createUserRequest, modal, setModal, addLatLong }) => (
   <Fragment>
     <Panel users={users.data} />
-    <Map passLatLong={addLatLong} />
+    <Map users={users.data} passLatLong={addLatLong} />
     <ModalInput opened={modal} userRequest={createUserRequest} updateStatus={setModal} />
   </Fragment>
 );
@@ -31,7 +31,7 @@ const enchance = compose(
     long: 0,
   }),
   withHandlers({
-    addLatLong: props => (lat, long) => {
+    addLatLong: props => (long, lat) => {
       props.setCurrentLatLong({
         ...props.currentLatLong,
         lat,

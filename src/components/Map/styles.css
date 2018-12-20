@@ -1,0 +1,10 @@
+.map__marker-wrapper, .map__marker-avatar {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
+
+.map__marker-avatar {
+  border: 2px solid #fff;
+  box-shadow: 0 0 5px 0 #00000059;
+}

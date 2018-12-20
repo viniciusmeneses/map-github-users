@@ -5,8 +5,11 @@ import {
 import MapGL, { Marker } from 'react-map-gl';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
+import './styles.css';
 
-const Map = ({ viewport, handleMapClick, handleMapViewport }) => (
+const Map = ({
+  viewport, handleMapClick, handleMapViewport, users,
+}) => (
   <MapGL
     {...viewport}
     onClick={handleMapClick}
@@ -14,22 +17,19 @@ const Map = ({ viewport, handleMapClick, handleMapViewport }) => (
     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX}
     onViewportChange={handleMapViewport}
   >
-    <Marker
-      latitude={-23.5439948}
-      longitude={-46.6065452}
-      onClick={handleMapClick}
-      captureClick
-    >
-      <img
-        style={{
-          borderRadius: 100,
-          width: 48,
-          height: 48,
-        }}
-        alt="Github User"
-        src="http://www.conaaud.com.br/wp-content/uploads/2018/09/avatar-png-1.png"
-      />
-    </Marker>
+    {users.map(user => (
+      <Marker
+        key={user.login}
+        latitude={user.lat}
+        longitude={user.long}
+        onClick={handleMapClick}
+        captureClick
+      >
+        <a href={user.url} target="_blank" rel="noopener noreferrer" className="map__marker-wrapper">
+          <img className="map__marker-avatar" alt={user.name} src={user.avatar} />
+        </a>
+      </Marker>
+    ))}
   </MapGL>
 );
 
@@ -37,9 +37,7 @@ const enchance = compose(
   withState('viewport', 'setViewport', {
     width: window.innerWidth,
     height: window.innerHeight,
-    latitude: -23.5439948,
-    longitude: -46.6065452,
-    zoom: 14,
+    zoom: 0,
   }),
   withProps({
     resizeMap() {
@@ -61,10 +59,10 @@ const enchance = compose(
   }),
   withHandlers({
     handleMapClick: props => (e) => {
-      const [latitude, longitude] = e.lngLat;
-      props.passLatLong(latitude, longitude);
+      const [longitude, latitude] = e.lngLat;
+      props.passLatLong(longitude, latitude);
     },
-    handleMapViewport: props => viewport => props.setViewport(() => (viewport)),
+    handleMapViewport: props => viewport => props.setViewport(() => viewport),
   }),
 );
 

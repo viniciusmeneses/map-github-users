@@ -7,7 +7,7 @@ const Panel = ({ users }) => (
   <section className="panel__wrapper">
     <div>
       {users.map(user => (
-        <article className="panel__user">
+        <article className="panel__user" key={user.login}>
           <a href={user.url} className="panel__user-avatar__wrapper" target="_blank" rel="noopener noreferrer">
             <img src={user.avatar} alt="Github Avatar" className="panel__user-avatar__image" />
           </a>

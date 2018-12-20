@@ -62,7 +62,7 @@ const enchance = compose(
   withHandlers({
     handleMapClick: props => (e) => {
       const [latitude, longitude] = e.lngLat;
-      alert(`Latitude: ${latitude} \nLongitude: ${longitude}`);
+      props.passLatLong(latitude, longitude);
     },
     handleMapViewport: props => viewport => props.setViewport(() => (viewport)),
   }),

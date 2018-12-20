@@ -88,3 +88,9 @@
   font-size: 1rem;
   font-weight: 400;
 }
+
+@media (max-width: 700px) {
+  .panel__wrapper {
+    display: none;
+  }
+}

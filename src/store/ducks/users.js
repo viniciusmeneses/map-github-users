@@ -27,7 +27,7 @@ export default function users(state = { loading: false, data: [], error: '' }, a
 // ACTIONS
 export const Creators = {
   addUserRequest: username => ({
-    type: TypeError.ADD_REQUEST,
+    type: Types.ADD_REQUEST,
     payload: { username },
   }),
   addUserSuccess: userData => ({

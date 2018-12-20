@@ -11,7 +11,7 @@ export function* addUser(action) {
     ));
 
     if (isDuplicated) {
-      return yield put(UserActions.addUserFailure('Usuário já adicionado!'));
+      return yield put(UserActions.addUserFailure('User already added!'));
     }
 
     const { data } = yield call(api.get, `/users/${action.payload.data.username}`);
@@ -27,6 +27,6 @@ export function* addUser(action) {
 
     yield put(UserActions.addUserSuccess(userData));
   } catch (err) {
-    yield put(UserActions.addUserFailure('Erro ao adicionar usuário!'));
+    yield put(UserActions.addUserFailure('An error occurred!'));
   }
 }

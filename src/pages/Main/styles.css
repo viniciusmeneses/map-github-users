@@ -1,0 +1,12 @@
+.main__toast-success, .main__toast-error {
+  text-align: center;
+  border-radius: 5px;
+}
+
+.main__toast-success {
+  background-color: #5eda68;
+}
+
+.main__toast-error {
+  background-color: #ec5454;
+}

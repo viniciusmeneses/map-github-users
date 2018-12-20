@@ -25,7 +25,12 @@ const Map = ({
         onClick={handleMapClick}
         captureClick
       >
-        <a href={user.url} target="_blank" rel="noopener noreferrer" className="map__marker-wrapper">
+        <a
+          href={user.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="map__marker-wrapper"
+        >
           <img className="map__marker-avatar" alt={user.name} src={user.avatar} />
         </a>
       </Marker>

@@ -28,9 +28,11 @@ const enchance = compose(
       e.preventDefault();
       props.userRequest(props.usernameInput);
       props.updateStatus(false);
+      props.setUsernameInput('');
     },
     handleClose: props => () => {
       props.updateStatus(false);
+      props.setUsernameInput('');
     },
   }),
 );

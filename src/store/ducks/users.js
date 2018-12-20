@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 // TYPES
 export const Types = {
   ADD_REQUEST: 'users/ADD_REQUEST',
@@ -6,7 +8,7 @@ export const Types = {
 };
 
 // REDUCER
-export default function users(state = { loading: false, data: [], error: '' }, action) {
+export default function users(state = { loading: false, data: [] }, action) {
   switch (action.type) {
     case Types.ADD_REQUEST:
       return { ...state, loading: true };
@@ -14,11 +16,10 @@ export default function users(state = { loading: false, data: [], error: '' }, a
       return {
         ...state,
         loading: false,
-        error: '',
         data: [...state.data, action.payload.userData],
       };
     case Types.ADD_FAILURE:
-      return { ...state, loading: false, error: action.payload.error };
+      return { ...state, loading: false };
     default:
       return state;
   }
@@ -30,12 +31,22 @@ export const Creators = {
     type: Types.ADD_REQUEST,
     payload: { data },
   }),
-  addUserSuccess: userData => ({
-    type: Types.ADD_SUCCESS,
-    payload: { userData },
-  }),
-  addUserFailure: error => ({
-    type: Types.ADD_FAILURE,
-    payload: { error },
-  }),
+  addUserSuccess: (userData) => {
+    toast.success('Github user added!', {
+      className: 'main__toast-success',
+    });
+    return {
+      type: Types.ADD_SUCCESS,
+      payload: { userData },
+    };
+  },
+  addUserFailure: (error) => {
+    toast.error(error, {
+      className: 'main__toast-error',
+    });
+    return {
+      type: Types.ADD_FAILURE,
+      payload: { error },
+    };
+  },
 };

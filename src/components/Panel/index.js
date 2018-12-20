@@ -1,5 +1,6 @@
 import React from 'react';
 import { withHandlers } from 'recompose';
+import PropTypes from 'prop-types';
 
 import '@fortawesome/fontawesome-free/css/all.css';
 import './styles.css';
@@ -46,6 +47,21 @@ const Panel = ({ users, handleRemoveClick, handleFindClick }) => (
     </div>
   </section>
 );
+
+Panel.propTypes = {
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      login: PropTypes.string,
+      name: PropTypes.string,
+      url: PropTypes.string,
+      avatar: PropTypes.string,
+      lat: PropTypes.number,
+      long: PropTypes.number,
+    }),
+  ).isRequired,
+  handleFindClick: PropTypes.func.isRequired,
+  handleRemoveClick: PropTypes.func.isRequired,
+};
 
 export default withHandlers({
   handleRemoveClick: props => login => props.removeUser(login),

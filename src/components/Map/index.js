@@ -1,6 +1,7 @@
 import React from 'react';
 import { compose, withHandlers } from 'recompose';
 import MapGL, { Marker } from 'react-map-gl';
+import PropTypes from 'prop-types';
 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import './styles.css';
@@ -37,6 +38,28 @@ const Map = ({
     ))}
   </MapGL>
 );
+
+Map.propTypes = {
+  viewport: PropTypes.shape({
+    height: PropTypes.number,
+    width: PropTypes.number,
+    longitude: PropTypes.number,
+    latitude: PropTypes.number,
+    zoom: PropTypes.number,
+  }).isRequired,
+  handleMapClick: PropTypes.func.isRequired,
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      login: PropTypes.string,
+      name: PropTypes.string,
+      url: PropTypes.string,
+      avatar: PropTypes.string,
+      lat: PropTypes.number,
+      long: PropTypes.number,
+    }),
+  ).isRequired,
+  onMapViewportChange: PropTypes.func.isRequired,
+};
 
 const enchance = compose(
   withHandlers({

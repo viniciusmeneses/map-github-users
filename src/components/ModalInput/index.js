@@ -1,5 +1,6 @@
 import React from 'react';
 import { withState, withHandlers, compose } from 'recompose';
+import PropTypes from 'prop-types';
 
 import 'animate.css/animate.min.css';
 import './styles.css';
@@ -32,6 +33,14 @@ const ModalInput = ({
     </aside>
   </div>
 );
+
+ModalInput.propTypes = {
+  usernameInput: PropTypes.string.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleFormSubmit: PropTypes.func.isRequired,
+  opened: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+};
 
 const enchance = compose(
   withState('usernameInput', 'setUsernameInput', ''),
